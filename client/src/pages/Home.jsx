@@ -15,9 +15,9 @@ import UploadCSV from "../components/UploadCSV";
 function Home() {
 const [open, setOpen] = React.useState(false);
 const [openFile, setOpenFile] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => { setOpen(true);console.log("Hi"); }
   const handleClose = () => setOpen(false);
-  const handleOpenFile = () => setOpenFile(true);
+  const handleOpenFile = () => { setOpenFile(true);console.log("Hi"); }
   const handleCloseFile = () => setOpenFile(false);
   const dispatch = useDispatch();
   const [getAllUsers]=useGetAllUsersMutation()
@@ -64,7 +64,7 @@ const [openFile, setOpenFile] = React.useState(false);
         <Button variant="outlined" color="success" onClick={downloadCSV}>
           DOWNLOAD
         </Button>
-        <Button variant="outlined" color="success" onClick={handleClose}>
+        <Button variant="outlined" color="success" onClick={handleOpenFile}>
           UPLOAD
         </Button>
       </div>

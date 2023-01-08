@@ -1,8 +1,15 @@
 import React from 'react'
+import { Button } from '@mui/material'
 
 function UploadCSV() {
+    
   return (
-    <div>UploadCSV</div>
+      <div>
+          <input type="file" />
+          <Button variant="contained" color="success" >
+          ADD
+        </Button>
+    </div>
   )
 }
 

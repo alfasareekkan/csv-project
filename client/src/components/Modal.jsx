@@ -19,7 +19,7 @@ borderRadius:2,
 };
 
 export default function AddModal({id, handleOpen,handleClose, open, children, title}) {
-
+console.log();
   return (
     <div>
       <Modal

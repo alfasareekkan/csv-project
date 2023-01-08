@@ -21,7 +21,12 @@ const userSchema = new mongoose.Schema({
     country: {
         type: String,
         required: true,
+    },
+    recordStatus: {
+        type: Number,
+        default:0
     }
+
 },{
     timestamps: true,
     collection:"Users"

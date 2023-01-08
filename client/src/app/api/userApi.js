@@ -29,9 +29,16 @@ const baseQuery = fetchBaseQuery({
                 method: 'POST',
                 body:{...credentials}
             })
+          }),
+          deleteUser: builder.mutation({
+            query: (credentials) => ({
+                url: `delete-user/${credentials}`,
+                method: 'DELETE',
+                // data: credentials
+            })
           })
 
       })
   });
 
-  export const {useAddUserMutation, useGetAllUsersMutation, useAddMultipleUsersMutation} =userApiSlice
+  export const {useAddUserMutation, useGetAllUsersMutation, useAddMultipleUsersMutation, useDeleteUserMutation} =userApiSlice

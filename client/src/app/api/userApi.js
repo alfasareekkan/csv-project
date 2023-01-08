@@ -22,9 +22,16 @@ const baseQuery = fetchBaseQuery({
                 url: 'get-user',
                 method: 'GET',
             })
-        }),
+          }),
+          addMultipleUsers: builder.mutation({
+            query: (credentials) => ({
+                url: 'create-user',
+                method: 'POST',
+                body:{...credentials}
+            })
+          })
 
       })
   });
 
-  export const {useAddUserMutation, useGetAllUsersMutation} =userApiSlice
+  export const {useAddUserMutation, useGetAllUsersMutation, useAddMultipleUsersMutation} =userApiSlice

@@ -15,9 +15,9 @@ import UploadCSV from "../components/UploadCSV";
 function Home() {
 const [open, setOpen] = React.useState(false);
 const [openFile, setOpenFile] = React.useState(false);
-  const handleOpen = () => { setOpen(true);console.log("Hi"); }
+  const handleOpen = () => setOpen(true);console.log("Hi");
   const handleClose = () => setOpen(false);
-  const handleOpenFile = () => { setOpenFile(true);console.log("Hi"); }
+  const handleOpenFile = () => setOpenFile(true);
   const handleCloseFile = () => setOpenFile(false);
   const dispatch = useDispatch();
   const [getAllUsers]=useGetAllUsersMutation()
@@ -27,7 +27,6 @@ const [openFile, setOpenFile] = React.useState(false);
 
   }
   const users = useSelector((state) => state.user.users)
-  console.log(users);
   function downloadCSV() {
     let data = users.reduce((acc, value) => {
       acc.push([
@@ -39,7 +38,7 @@ const [openFile, setOpenFile] = React.useState(false);
       ])
       return acc
     }, [])
-    let csvData = [["Name", "Email", "Address", "dob", "Country"], ...data]
+    let csvData = [["name", "email", "address", "dob", "country"], ...data]
      csvData = Papa.unparse(csvData);
 
     const blob = new Blob([csvData], { type: 'text/csv' });

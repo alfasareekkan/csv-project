@@ -18,11 +18,12 @@ borderRadius:2,
   p: 5,
 };
 
-export default function AddModal({handleOpen,handleClose, open, children, title}) {
+export default function AddModal({id, handleOpen,handleClose, open, children, title}) {
 
   return (
     <div>
       <Modal
+        id={id}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

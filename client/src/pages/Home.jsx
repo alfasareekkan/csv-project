@@ -10,11 +10,15 @@ import "./home.css";
 import UserForm from "../components/UserForm";
 import { useGetAllUsersMutation } from "../app/api/userApi";
 import { setAllUsers } from "../features/userSlice";
+import UploadCSV from "../components/UploadCSV";
 
 function Home() {
 const [open, setOpen] = React.useState(false);
+const [openFile, setOpenFile] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpenFile = () => setOpenFile(true);
+  const handleCloseFile = () => setOpenFile(false);
   const dispatch = useDispatch();
   const [getAllUsers]=useGetAllUsersMutation()
  async function getData() {
@@ -60,16 +64,19 @@ const [open, setOpen] = React.useState(false);
         <Button variant="outlined" color="success" onClick={downloadCSV}>
           DOWNLOAD
         </Button>
-        <Button variant="outlined" color="success">
+        <Button variant="outlined" color="success" onClick={handleClose}>
           UPLOAD
         </Button>
       </div>
       <div>
         <UserList />
           </div>
-          <AddModal handleOpen={handleOpen} handleClose={handleClose} open={open} title="Add User" >
+          <AddModal id="dfsdf" handleOpen={handleOpen} handleClose={handleClose} open={open} title="Add User" >
               <UserForm/>
-          </AddModal>
+      </AddModal>
+      <AddModal id="asdf" handleOpen={handleOpenFile} handleClose={handleCloseFile} open={openFile} title="Upload File">
+        <UploadCSV />
+      </AddModal>
     </div>
   );
 }

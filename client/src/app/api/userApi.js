@@ -25,7 +25,7 @@ const baseQuery = fetchBaseQuery({
           }),
           addMultipleUsers: builder.mutation({
             query: (credentials) => ({
-                url: 'create-user',
+                url: 'inset-many-user',
                 method: 'POST',
                 body:{...credentials}
             })

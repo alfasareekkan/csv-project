@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material'
 import Papa from 'papaparse';
 import { useAddMultipleUsersMutation } from '../app/api/userApi';
+import { insertManyUser } from '../features/userSlice';
 
-function UploadCSV() {
+function UploadCSV({handleClose}) {
     const [file, setFile] = useState();
-    const [addMultipleUsers,{isLoading}] = useAddMultipleUsersMutation();
+    const [addMultipleUsers, { isLoading }] = useAddMultipleUsersMutation();
+    const dispatch = useDispatch();
     const handleFile = (e) => {
         e.preventDefault();
         setFile(e.target.files[0]);
@@ -14,7 +17,9 @@ function UploadCSV() {
         Papa.parse(file, {
             header: true,
             complete: async(r) => {
-               await addMultipleUsers(e.data).unwrap()
+                let result = await addMultipleUsers({ data: r.data }).unwrap()
+                dispatch(insertManyUser(result))
+                handleClose()
             }
         })
     }

@@ -74,7 +74,7 @@ const [openFile, setOpenFile] = React.useState(false);
               <UserForm/>
       </AddModal>
       <AddModal id="asdf" handleOpen={handleOpenFile} handleClose={handleCloseFile} open={openFile} title="Upload File">
-        <UploadCSV />
+        <UploadCSV handleClose={handleCloseFile} />
       </AddModal>
     </div>
   );
